@@ -28,48 +28,48 @@ library_name: sentence-transformers
 ---
 # bge-m3-ml-tr-specialized
 
-`bge-m3-ml-tr-specialized`, Türkçe makine öğrenmesi hakkında bilimsel ve teknik metinler için optimize edilmiş bir Sentence Transformer modelidir. Model, `BAAI/bge-m3` temel alınarak eğitilmiş olup, cümle benzerliği, semantik arama, kavramsal eşleşme ve anlam odaklı sınıflandırma gibi görevlerde kullanılmak üzere tasarlanmıştır.
+`bge-m3-ml-tr-specialized` is a Sentence Transformer model optimized for scientific and technical texts in Turkish, specifically in the field of machine learning. Based on `BAAI/bge-m3`, the model has been fine-tuned for tasks such as sentence similarity, semantic search, conceptual matching, and meaning-based classification.
 
-## 🧠 Model Özellikleri
+## 🧠 Model Specifications
 
-- **Model Türü:** Sentence Transformer  
-- **Taban Model:** [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3)  
-- **Uygulama Alanları:**
-  - Cümle düzeyinde benzerlik hesaplama
-  - Semantik bilgiye dayalı metin eşleştirme
-  - Bilgi erişimi ve semantik arama sistemleri
-  - Bilimsel metinlerin anlamsal kümeleme ve sıralanması
-- **Dil:** Türkçe (özellikle teknik ve bilimsel cümleler)
-- **Maksimum Girdi Uzunluğu:** 8192 token  
-- **Çıktı Vektör Boyutu:** 1024  
-- **Havuzlama Yöntemi:** CLS token üzerinden  
-- **Benzerlik Ölçütü:** Kosinüs Benzerliği (Cosine Similarity)
+- **Model Type:** Sentence Transformer  
+- **Base Model:** [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3)  
+- **Use Cases:**
+  - Sentence-level semantic similarity
+  - Conceptual and contextual sentence alignment
+  - Information retrieval and semantic search systems
+  - Clustering and ranking of scientific documents
+- **Language:** Turkish (especially technical and scientific domain)
+- **Maximum Sequence Length:** 8192 tokens  
+- **Output Vector Dimension:** 1024  
+- **Pooling Strategy:** CLS token  
+- **Similarity Metric:** Cosine Similarity
 
-## 🔍 Model Mimarisi
+## 🔍 Model Architecture
 
-\`\`\`python
+```python
 SentenceTransformer(
   (0): Transformer({'max_seq_length': 8192, 'architecture': 'XLMRobertaModel'})
   (1): Pooling({'word_embedding_dimension': 1024, 'pooling_mode_cls_token': True})
   (2): Normalize()
 )
-\`\`\`
+```
 
-## 🚀 Hızlı Başlangıç
+## 🚀 Quick Start
 
-\`\`\`bash
+```bash
 pip install -U sentence-transformers
-\`\`\`
+```
 
-\`\`\`python
+```python
 from sentence_transformers import SentenceTransformer
 
 model = SentenceTransformer("dogukanvzr/bge-m3-ml-tr-specialized")
 
 sentences = [
-    "Doğruluk, bir modelin gerçek değerlere ne kadar yakın sonuçlar verdiğini gösterir.",
-    "Model doğruluğu, tahminlerin gerçek etiketlerle örtüşme derecesini yansıtır.",
-    "Özellik mühendisliği, makine öğrenmesi süreçlerinde önemli rol oynar."
+    "Accuracy refers to how close a model's predictions are to the actual values.",
+    "Model accuracy indicates how well the predictions align with true labels.",
+    "Feature engineering plays a critical role in machine learning pipelines."
 ]
 
 embeddings = model.encode(sentences)
@@ -77,52 +77,52 @@ embeddings = model.encode(sentences)
 from sklearn.metrics.pairwise import cosine_similarity
 scores = cosine_similarity([embeddings[0]], embeddings[1:])
 print(scores)
-\`\`\`
+```
 
-## 🧪 Eğitim Bilgileri
+## 🧪 Training Details
 
-- **Veri Kümesi:** [`ml-paraphrase-tr`](https://huggingface.co/datasets/dogukanvzr/ml-paraphrase-tr)
-- **Boyut:** 60.000 örnek  
-- **Yapı:** `sentence_0`, `sentence_1`, `label` (float, 0.0–1.0 arası benzerlik)  
-- **Kayıp Fonksiyonu:** `CosineSimilarityLoss` (içsel olarak `MSELoss` kullanılmıştır)  
-- **Eğitim Epoch Sayısı:** 3  
+- **Dataset:** [`ml-paraphrase-tr`](https://huggingface.co/datasets/dogukanvzr/ml-paraphrase-tr)  
+- **Size:** 60,000 sentence pairs  
+- **Structure:** `sentence_0`, `sentence_1`, `label` (float between 0.0–1.0 indicating similarity)  
+- **Loss Function:** `CosineSimilarityLoss` (internally uses `MSELoss`)  
+- **Training Epochs:** 3  
 - **Batch Size:** 64  
 
-### 📈 Eğitim Süreci
+### 📈 Training Log
 
-| Epoch | Adım | Ortalama Kayıp (Loss) |
-|-------|------|------------------------|
-| 0.5   | 500  | 0.0338                 |
-| 1.0   | 1000 | 0.0188                 |
-| 1.5   | 1500 | 0.0147                 |
-| 2.0   | 2000 | 0.0127                 |
-| 2.5   | 2500 | 0.0105                 |
+| Epoch | Step | Average Loss |
+|-------|------|---------------|
+| 0.5   | 500  | 0.0338        |
+| 1.0   | 1000 | 0.0188        |
+| 1.5   | 1500 | 0.0147        |
+| 2.0   | 2000 | 0.0127        |
+| 2.5   | 2500 | 0.0105        |
 
-## 📊 Kullanım Alanları
+## 📊 Application Areas
 
-Bu model, özellikle aşağıdaki teknik/NLP görevleri için uygundur:
+This model is particularly well-suited for the following NLP and ML tasks in Turkish:
 
-- Türkçe teknik dökümanlarda **anlamsal eşleştirme**
-- Akademik ve bilimsel metinlerde **benzerlik analizi**
-- **Embedding tabanlı bilgi erişim sistemleri**
-- **Paraphrase detection** (anlamca yakın cümle çiftlerinin tespiti)
-- **Semantic Clustering** (anlam temelli kümeleme)
-- Soru-cevap sistemlerinde **intent eşleştirme**
+- **Semantic alignment** in technical documents  
+- **Similarity detection** in scientific and academic texts  
+- **Embedding-based information retrieval**  
+- **Paraphrase identification** (detecting meaning-equivalent sentence pairs)  
+- **Semantic clustering** for topic grouping  
+- **Intent matching** in QA and chatbot systems
 
-## 💡 Örnek Değerlendirme
+## 💡 Evaluation Example
 
-\`\`\`python
-s1 = "Makine öğrenmesi algoritmaları, geçmiş verilerden öğrenerek geleceği tahmin eder."
-s2 = "Model, öğrenilmiş örüntülerden faydalanarak tahmin yürütür."
-s3 = "Veri seti boyutu, modelin genelleme kapasitesini etkileyebilir."
+```python
+s1 = "Machine learning algorithms learn from past data to make future predictions."
+s2 = "The model performs inference based on learned patterns."
+s3 = "The size of the dataset can affect the generalization capacity of the model."
 
 embs = model.encode([s1, s2, s3])
 from sklearn.metrics.pairwise import cosine_similarity
 sim = cosine_similarity([embs[0]], embs[1:])
 print(sim)
-\`\`\`
+```
 
-## ⚙️ Geliştirme Ortamı
+## ⚙️ Development Environment
 
 - Python: 3.12.7  
 - Sentence Transformers: 5.0.0  
@@ -132,9 +132,9 @@ print(sim)
 - Datasets: 4.0.0  
 - Tokenizers: 0.21.4  
 
-## 📚 Atıf
+## 📚 Citation
 
-\`\`\`bibtex
+```bibtex
 @inproceedings{reimers-2019-sentence-bert,
     title = "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
     author = "Reimers, Nils and Gurevych, Iryna",
@@ -144,17 +144,17 @@ print(sim)
     publisher = "Association for Computational Linguistics",
     url = "https://arxiv.org/abs/1908.10084",
 }
-\`\`\`
+```
 
-## ⚠️ Sınırlılıklar
+## ⚠️ Limitations
 
-- Model, teknik ve bilimsel dil üzerinde eğitildiği için günlük konuşma dili veya mecaz içeren ifadelerde düşük performans gösterebilir.
-- Kültürel bağlam, ironi, deyimsel ifadeler gibi alanlarda genelleme yeteneği sınırlıdır.
-- Eğitim verisinde bias oluşmamış olsa da, çıktılar dikkatle değerlendirilmelidir.
+- The model is trained primarily on scientific/technical Turkish text and may underperform on casual, figurative, or conversational language.
+- It might struggle with cultural references, idioms, or sarcasm.
+- Although trained on high-quality paraphrased data, users should still review outputs critically.
 
-## 📬 İletişim ve Geri Bildirim
+## 📬 Contact & Feedback
 
-Model ile ilgili sorun bildirmek, öneride bulunmak ya da katkıda bulunmak için:
+For bug reports, suggestions, or contributions:
 
-- 📧 Hugging Face Profili: [@dogukanvzr](https://huggingface.co/dogukanvzr)
-- 📂 Veri kümesi: [`ml-paraphrase-tr`](https://huggingface.co/datasets/dogukanvzr/ml-paraphrase-tr)
+- 📧 Hugging Face Profile: [@dogukanvzr](https://huggingface.co/dogukanvzr)  
+- 📂 Dataset used for training: [`ml-paraphrase-tr`](https://huggingface.co/datasets/dogukanvzr/ml-paraphrase-tr)
