@@ -28,7 +28,7 @@ library_name: sentence-transformers
 ---
 # bge-m3-ml-tr-specialized
 
-`bge-m3-ml-tr-specialized` is a Sentence Transformer model optimized for scientific and technical texts in Turkish, specifically in the field of machine learning. Based on `BAAI/bge-m3`, the model has been fine-tuned for tasks such as sentence similarity, semantic search, conceptual matching, and meaning-based classification.
+`bge-m3-ml-tr-specialized` is a Sentence Transformer model optimized for scientific and technical machine learning texts in Turkish, specifically in the field of machine learning. Based on `BAAI/bge-m3`, the model has been fine-tuned for tasks such as sentence similarity, semantic search, conceptual matching, and meaning-based classification.
 
 ## 🧠 Model Specifications
 
