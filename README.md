@@ -152,6 +152,10 @@ print(sim)
 - It might struggle with cultural references, idioms, or sarcasm.
 - Although trained on high-quality paraphrased data, users should still review outputs critically.
 
+## 🔗 Model Weights (Hugging Face)
+The model weights are hosted on Hugging Face instead of GitHub:  
+👉 [https://huggingface.co/dogukanvez/bge-m3-ml-tr-specialized](https://huggingface.co/dogukanvez/bge-m3-ml-tr-specialized)
+
 ## 📬 Contact & Feedback
 
 For bug reports, suggestions, or contributions:
