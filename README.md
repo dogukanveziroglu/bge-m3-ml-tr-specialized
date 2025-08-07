@@ -1,6 +1,34 @@
+---
+license: apache-2.0
+datasets:
+- dogukanvzr/ml-paraphrase-tr
+language:
+- tr
+base_model:
+- BAAI/bge-m3
+pipeline_tag: sentence-similarity
+tags:
+- sentence-transformers
+- sentence-similarity
+- feature-extraction
+- embedding
+- paraphrase-identification
+- semantic-search
+- text-embedding
+- dense
+- turkish
+- technical-language
+- scientific-text
+- huggingface
+- transformer
+- multilingual
+- cosine-similarity
+- ml-paraphrase-tr
+library_name: sentence-transformers
+---
 # bge-m3-ml-tr-specialized
 
-`bge-m3-ml-tr-specialized`, Türkçe bilimsel ve teknik metinler için optimize edilmiş bir Sentence Transformer modelidir. Model, `BAAI/bge-m3` temel alınarak eğitilmiş olup, cümle benzerliği, semantik arama, kavramsal eşleşme ve anlam odaklı sınıflandırma gibi görevlerde kullanılmak üzere tasarlanmıştır.
+`bge-m3-ml-tr-specialized`, Türkçe makine öğrenmesi hakkında bilimsel ve teknik metinler için optimize edilmiş bir Sentence Transformer modelidir. Model, `BAAI/bge-m3` temel alınarak eğitilmiş olup, cümle benzerliği, semantik arama, kavramsal eşleşme ve anlam odaklı sınıflandırma gibi görevlerde kullanılmak üzere tasarlanmıştır.
 
 ## 🧠 Model Özellikleri
 
